@@ -14,7 +14,23 @@ port = 8081
 
 client.connect(broker, port)
 
-payload = json.dumps({"name": "Carpark-watch", "tempCelsius": 3.5, "location": {"lat": 52.5740072, "lon": -0.2399354}, "batteryMv": 2700})
+payload = json.dumps({
+    "name": "Alpha Cortex",
+    "tempCelsius": 3.5,
+    "location": {
+        "lat": 52.5740072, 
+        "lon": -0.2399354
+    },
+    "dest": {
+        "lat": 52.5740081, 
+        "lon": -0.2399367
+    },
+    "altitude": 310.12,
+    "bearing": 321.1222,
+    "speed": 83,
+    "payloadPercent": 32,
+    "batteryPercent": 87
+})
 
 ret = client.publish(os.getenv("CHANNEL_KEY"), payload)
 print(ret)

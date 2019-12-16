@@ -10,9 +10,9 @@ module.exports = async (event, context) => {
     let client = await pool.connect()
 
     if(event.method == "POST") {
-        let {name, location, tempCelsius, batteryMv} = event.body;
-        console.log(name, location, tempCelsius, batteryMv)
-        await insert(client, name, location, tempCelsius, batteryMv);
+        let {name, location, dest, altitude, bearing, speed, payloadPercent, tempCelsius, batteryPercent} = event.body;
+        console.log(name, location, dest, altitude, bearing, speed, payloadPercent, tempCelsius, batteryPercent)
+        await insert(name, location, dest, altitude, bearing, speed, payloadPercent, tempCelsius, batteryPercent);
 
         client.release()
         return context.status(200).succeed({"status": "OK"});
@@ -22,9 +22,10 @@ module.exports = async (event, context) => {
     return context.status(200).succeed({"status": "No action"});
 }
 
-async function insert(client, name, location, tempCelsius, batteryMv) {
-    let res = await client.query(`insert into drone_position (name, location, temp_celsius, battery_mv) values ($1, $2, $3, $4);`,
-    [name, new Point(location).toString(), tempCelsius, batteryMv]);
+async function insert(name, location, dest, altitude, bearing,
+        speed, payloadPercent, tempCelsius, batteryPercent) {
+    let res = await client.query(`insert into drone_position (name, location, dest, alititude, bearing, speed, payload_percent, temp_celsius, battery_percent) values ($1, $2, $3, $4, $5, $6, $7, $8, $9);`,
+    [name, new Point(location).toString(), new Point(dest).toString(), altitude, bearing, speed, payloadPercent, tempCelsius, batteryPercent]);
     console.log(res);
 }
 

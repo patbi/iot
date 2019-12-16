@@ -15,19 +15,19 @@
 
     ```sh
 
-    # Patrolling the Peterborough Cathedral
+    # Hovering over the Peterborough Cathedral
     curl 127.0.0.1:8080/function/db-inserter \
-    --data '{"name": "Halo", "tempCelsius": 8.5, "location": {"lat":  52.5724835, "lon": -0.2392101}, "batteryMv": 4800}' \
+    --data '{"name": "Halo", "tempCelsius": 8.5, "location": {"lat":  52.5724835, "lon": -0.2392101}, "dest": {"lat":  52.5724835, "lon": -0.2392101}, "altitude": 300.1, "bearing": 90, "speed": 0, "batteryPercent": 83, "payloadPercent: 0}' \
     -H "Content-Type: application/json"
 
-    # Patrolling the market
+    # Delivering cucumbers to the market
     curl 127.0.0.1:8080/function/db-inserter \
-    --data '{"name": "Market-watch", "tempCelsius": 8.5, "location": {"lat":  52.5736589, "lon": -0.2400627}, "batteryMv": 4800}' \
+    --data '{"name": "Market-watch", "tempCelsius": 8.5, "location": {"lat":  52.5736587, "lon": -0.240063}, "dest": {"lat":  52.5736589, "lon": -0.2400627}, "altitude": 213, "bearing": 13, "speed": 5, "batteryPercent": 62, "payloadPercent: 83}' \
     -H "Content-Type: application/json"
 
     # Patrolling the outdoor pool
     curl 127.0.0.1:8080/function/db-inserter \
-    --data '{"name": "Pool-watch", "tempCelsius": 8.5, "location": {"lat":  52.5700276, "lon": -0.2384085}, "batteryMv": 4800}' \
+    --data '{"name": "Pool-watch", "tempCelsius": 8.5, "location": {"lat":  52.5700275, "lon": -0.2384085}, "dest": {"lat":  52.5700276, "lon": -0.2384085}, "altitude": 213, "bearing": 180, "speed": 1, "batteryPercent": 49, "payloadPercent: 0}' \
     -H "Content-Type: application/json"
     ```
 
